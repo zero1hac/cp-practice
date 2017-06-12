@@ -1,0 +1,36 @@
+5------Incomplete------------------5/*Dushyant Kumar Mishra
+zeroonehacker
+Mathematics and Computing
+IIT BHU Varanasi
+*/
+#include<iostream>
+#include<stdio.h>
+#include<string>
+#include<algorithm>
+#define gc getchar_unlocked
+
+void scanint(int &x)
+{
+    register int c = gc();
+    x = 0;
+    for(;(c<48 || c>57);c = gc());
+    for(;c>47 && c<58;c = gc()) {x = (x<<1) + (x<<3) + c - 48;}
+}
+
+using namespace std;
+int main(){
+	int T,i;
+	string S;
+	scanint(T);
+	while(T--){
+		cin>>S;
+		i = S.length()/2 - 1;
+		sort(0,i);
+		sort(i+1,S.length()-1);
+		if(i=0)cout<<"NO";
+		else printf("NO");
+		}
+	
+			
+
+return 0;}

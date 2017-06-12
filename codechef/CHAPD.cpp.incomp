@@ -1,0 +1,31 @@
+/*Dushyant Kumar Mishra
+zeroonehacker
+Mathematics and Computing
+IIT BHU Varanasi
+*/
+#include<iostream>
+#include<stdio.h>
+#include<string>
+using namespace std;
+int main(){
+	int T,flag;
+	long long int A,B;
+	cin>>T;
+	while(T--){
+		cin>>A;
+		cin>>B;
+		for(long long int i=2;i<=B/2;i++){
+			flag =0 ;
+			while(B%i == 0){
+				if(A%i ==0);
+				else {
+					flag =1;
+					break;
+				}
+			while(B%i == 0)B/=i;
+			}
+			if(flag == 1) {printf("NO\n");break;}
+			}
+		if(flag == 0)printf("YES\n");
+	}
+return 0;}
