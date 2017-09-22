@@ -16,24 +16,19 @@ bool arr[100005];
 int main(){
   ios_base::sync_with_stdio(false);
   cin.tie(NULL);
-  int N;
-  cin>>N;
-  int count=0, max_on=0;
-  for(int i=1; i<=2*N; i++){
-    int p;
-    cin>>p;
-    if(arr[p]){
-      count--;
-      max_on = max(max_on, count);
-      arr[p]=0;
+  int n, q;
+  cin>>n>>q;
+  int unread=0;
+  queue<int> e[n+1];
+  queue<pair<int, int> > Q;
+  int i=1;
+  while(q--){
+    int t;
+    switch(t){
+      case 1: int x;cin>>x;Q.insert(make_pair(i++, x)); unread++; cout<<unread<<endl;break;
+      case 2:
     }
-    else{
-      count++;
-      max_on = max(max_on, count);
-      arr[p]=1;
-    }
-    }
-    cout<<max_on<<endl;
+  }
 
   return 0;
 }
