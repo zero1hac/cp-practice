@@ -13,24 +13,38 @@ typedef vector<ii> vii;
 typedef vector<vi> vvi;
 typedef vector<vii> vvii;
 
-#define TRACE
-#ifdef TRACE
-#define trace(...) __f(#__VA_ARGS__, __VA_ARGS__)
-template <typename Arg1>
-void __f(const char* name, Arg1&& arg1){
-    cerr << name << " : " << arg1 << std::endl;
-}
-template <typename Arg1, typename... Args>
-void __f(const char* names, Arg1&& arg1, Args&&... args){
-    const char* comma = strchr(names + 1, ',');cerr.write(names, comma - names) << " : " << arg1<<" | ";__f(comma+1, args...);
-}
-#else
-#define trace(...)
-#endif
 
+
+
+bool check_average(vector<int> vec, int sum1){
+  unordered_map<int, int> mp;
+  for(int i=0; i<vec.size(); i++){
+    if(mp.find(sum1 - vec[i]) != mp.end()){
+      return true;
+    }
+    else{
+      mp[vec[i]] = vec[i];
+    }
+  }
+  return false;
+}
 int main(){
   ios_base::sync_with_stdio(false);
   cin.tie(NULL);
+  int N;
+  cin>>N;
+  std::vector<int> v(N);
+  for(int i=0; i<N; i++){
+    cin>>v[i];
+  }
+  int count=0;
+  for(int i=0; i<N; i++){
 
+    if(check_average(v, 2*v[i])){
+      count++;
+    }
+    //trace(v[i], count);
+  }
+  cout<<count<<endl;
   return 0;
 }

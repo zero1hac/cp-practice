@@ -28,9 +28,41 @@ void __f(const char* names, Arg1&& arg1, Args&&... args){
 #define trace(...)
 #endif
 
+int arr[100005];
+bool arr1[100005];
+void seive(){
+  int primes = 0;
+  for(int i=2; i<100005; i++){
+    if(arr1[i]==false){
+      for(int j=i+i;j<100005; j+=i){
+        arr1[j]=true;
+      }
+    }
+  }
+  for(int i=2; i<100005; i++){
+    if(arr1[i]==false){
+      primes++;
+    }
+    arr[i]=primes;
+  }
+}
 int main(){
   ios_base::sync_with_stdio(false);
   cin.tie(NULL);
+  int G;
+  cin>>G;
+  seive();
+  while(G--){
+    int N;
+    cin>>N;
+    if(arr[N]%2 == 0){
+      cout<<"Bob\n";
+    }
+    else{
+      cout<<"Alice\n";
+    }
+  }
+
 
   return 0;
 }
