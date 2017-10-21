@@ -51,7 +51,7 @@ struct Info{
 
 Info largestBST(Node * root){
   if(root==NULL){
-    return {0,0,true,INT_MAX, INT_MIN};
+    return {0,0,true,INT_MAX  , INT_MIN};
   }
   if(root->left == NULL && root->right==NULL){
     return {1,1,true, root->data, root->data};
