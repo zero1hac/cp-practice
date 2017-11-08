@@ -27,37 +27,37 @@ void __f(const char* names, Arg1&& arg1, Args&&... args){
 #else
 #define trace(...)
 #endif
+bool cmp(pair<int, int> a, pair<int, int> b){
+  return a.first > b.first;
 
-long long int dp[200010 ][4];
-std::vector<long long int> arr;
-int N;
-
-long long int rec(int ind, int rest){
-  if(rest >= 3){
-    return INT_MAX;
-  }
-  else if(ind >= N){
-    return 0;
-  }
-  else if(dp[ind][rest] != -1){
-    return dp[ind][rest];
-  }
-  else{
-    dp[ind][rest] = min(arr[ind] + rec(ind+1, 0), rec(ind+1, rest+1));
-    return dp[ind][rest];
-  }
 }
 int main(){
   ios_base::sync_with_stdio(false);
   cin.tie(NULL);
+  int N;
   cin>>N;
-  arr.resize(N);
-  for(int i=0; i<N; i++){
-    cin>>arr[i];
+  int M;
+  cin>>M;
+  vector<bool> pai1(N+1, false);
+  vector<pair<int, int> > cargap;
+  for(int i=0; i<M; i++){
+    int ini;
+    cin>>ini;
+    int end;
+    cin>>end;
+    cargap.push_back({ini, end});
   }
 
-  memset(dp, -1, sizeof(dp));
-  cout<<rec(0,0)<<endl;
+  stable_sort(cargap.begin(), cargap.end());
+  int max_s = INT_MIN;
+  max_s = max(max_s, cargap[0].first - 1);
+  for(int i=0; i<cargap.size(); i++){
+    cout<<cargap[i].first<<" "<<cargap[i].second<<endl;
+    max_s = max(max_s, cargap[i+1].first - cargap[i].second -1);
+  }
+  max_s = max(max_s, N - cargap[M-1].second);
+  cout<<"max gap: "<<max_s<<endl;
+
 
   return 0;
 }
