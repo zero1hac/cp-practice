@@ -19,9 +19,9 @@ typedef vector<vii> vvii;
 vector<vector<int> > generateMatrix(int A) {
     vector<vector<int> > mat(A, vector<int>(A, 0));
     int di=0,dj=1,i=0,j=0;
-    cout<<"x";
+    //cout<<"x";
     for(int x=0; x<A*A; x++){
-      cout<<i<<" :i"<<j<<" :j"<<endl;
+      //cout<<i<<" :i"<<j<<" :j"<<endl;
         mat[i][j] = x+1;
         if(mat[(i+di+A)%A][(j+dj+A)%A]){
             int temp = di;
